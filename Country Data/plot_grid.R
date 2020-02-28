@@ -11,7 +11,7 @@ test1 <- test[test$country == "ARG",]
 unqind <- unique(test$indicator)
 unqind <- unqind[c(1, 9, 100)]
 
-test <- test[which(test$indicator%in%unqind),]
+test <- test[which(test$indicator %in% unqind),]
 
 ven <- test[test$country == "VEN",]
 df <- merge(test, ven, by = c("year", 'indicator'))
