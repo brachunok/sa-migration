@@ -38,3 +38,4 @@ testPlot = ggplot() +
   geom_line(data = dataSubset, aes(x = year, y = valVEN), color = 'red') +
   facet_grid(cols = vars(country), rows = vars(indicator), scales = 'free') +
   theme_bw()
+testPlot

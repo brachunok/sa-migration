@@ -2,7 +2,7 @@ library(shiny)
 
 # Load data set
 library(tidyverse)
-data = read_csv("~/Github/sa-migration/Country Data/API_Download_DS2_en_csv_v2_792501.csv")
+data = read.csv("~/Github/sa-migration/Country Data/API_Download_DS2_en_csv_v2_792501.csv")
 colnames(data)= c("country", "indicator", c(1960:2007))
 
 countries = unique(data$country)
@@ -39,16 +39,19 @@ shinyServer(function(input,output) {
     df[union(which(df$country %in% input$country_selection), which(df$country %in% 'VEN')),]
     })
   
-  # testPlot = ggplot() +
-  #   geom_line(data = dataSubset, aes(x = year, y = val), color = 'blue') +
-  #   geom_line(data = dataSubset, aes(x = year, y = valVEN), color = 'red') +
-  #   facet_grid(cols = vars(country), rows = vars(indicator), scales = 'free') +
-  #   theme_bw()
+  testPlot = reactive({
+    ggplot() +
+    geom_line(data = dataSubset, aes(x = year, y = val), color = 'blue') +
+    geom_line(data = dataSubset, aes(x = year, y = valVEN), color = 'red') +
+    facet_grid(cols = vars(country), rows = vars(indicator), scales = 'free') +
+    theme_bw()
+  })
   
-  # output$test = renderPlot({testPlot})
-  
-  
+  output$test = renderPlot({testPlot})
   output$big_plot = renderPlot({p})
   
+  output$map = renderImage({
+    list(src = 'south_am.jpg')
+  }, deleteFile = F)
   
 })
