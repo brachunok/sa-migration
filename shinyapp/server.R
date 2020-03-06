@@ -47,7 +47,7 @@ shinyServer(function(input, output) {
   })
   
   output$map = renderImage({
-    list(src = paste(input$country_selection, '_map.jpg', sep = ''), width = '140%', height = '140%')
+    list(src = paste(input$country_selection, '_map.jpg', sep = ''), width = '100%', height = '100%')
   }, deleteFile = F)
   
   output$country_name = renderText({

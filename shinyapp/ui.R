@@ -34,9 +34,9 @@ shinyUI(fluidPage(
     ), width = 1),
     
     column(imageOutput(
-      'map', width = 'auto', height = 'auto'), width = 3),
+      'map', width = 'auto', height = 'auto'), width = 4),
     
-    column(plotOutput('test', height = 750), width = 3),
+    column(plotOutput('test', height = 750), width = 4),
     
     column(h3(textOutput('country_name')), textOutput('description'), width = 2)
   ),
