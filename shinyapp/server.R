@@ -36,22 +36,13 @@ theme_set(theme_bw() + theme(legend.position = 'bottom'))
 
 country_text = readLines('./country_text.txt')
 
-facet_names = labeller("Population growth (annual %)" = "Population growth (annual %)",
-                   "Net official development assistance received (current US$)" = "Development assistance received (current US$)",
-                   "Life expectancy at birth, total (years)" = "Life expectancy at birth (years)",
-                   "GDP per capita (constant LCU)" = "GDP per capita (constant LCU)",
-                   "GDP deflator (base year varies by country)" = "GDP deflator (base year varies)")
-facet_labeller = function(variable, value) {
-  return(facet_names[value])
-}
-
 # Define server logic
 shinyServer(function(input, output) {
   output$test = renderPlot({
     ggplot() +
       geom_line(data = df[which(df$country %in% input$country_selection), ], aes(x = year, y = val), color = '#7FA998') +
       geom_line(data = df[which(df$country %in% 'VEN'), ], aes(x = year, y = val), color = '#9D2503') +
-      facet_grid(rows = vars(indicator), scales = 'free') +
+      facet_wrap(indicator~., scales = 'free') +
       ylab('Value') + xlab('Year')
   })
   
