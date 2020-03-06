@@ -9,8 +9,9 @@ shinyUI(fluidPage(
     "We decided to look at the factors that led to the Venezuelan migration crisis. Venezuela has been in a
     major economic crisis since 2010, and low oil prices have worsened the crisis. Hyperinflation has followed, 
     and the conditions led many to leave the country as migrants, typically to other South American countries. 
-    As you look through some selected social and economic indicators, we urge you to consider how people are 
-    pushed to move to better conditions given they have geographic mobility."
+    This has caused a crisis in some countries such as Colombia who have difficulty accepting the large amount 
+    of migrants.As you look through some selected social and economic indicators, we urge you to consider how 
+    people are pushed to move to places where they believe they will do better, and how the geography impacts this."
   ),
   
   fluidRow(
@@ -33,7 +34,7 @@ shinyUI(fluidPage(
     ), width = 1),
     
     column(imageOutput(
-      'map'), width = 3),
+      'map', width = 'auto', height = 'auto'), width = 3),
     
     column(plotOutput('test', height = 750), width = 3),
     
