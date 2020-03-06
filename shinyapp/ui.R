@@ -33,8 +33,7 @@ shinyUI(fluidPage(
     ), width = 1),
     
     column(imageOutput(
-      'map', width = '100%', height = '100%'
-    ), width = 3),
+      'map'), width = 3),
     
     column(plotOutput('test', height = 750), width = 3),
     

@@ -2,7 +2,7 @@ library(shiny)
 
 # Load data set
 library(tidyverse)
-data = read.csv("~/Github/sa-migration/Country Data/API_Download_DS2_en_csv_v2_792501.csv")
+data = read.csv("~/Documents/sa-migration/Country Data/API_Download_DS2_en_csv_v2_792501.csv")
 colnames(data) = c("country", "indicator", c(1960:2019))
 
 data = data[, c(1, 2, 43:62)]
@@ -34,7 +34,7 @@ colnames(df) = c('country', 'indicator', 'year', 'val')
 library(ggplot2)
 theme_set(theme_bw() + theme(legend.position = 'bottom'))
 
-country_text = readLines('~/Github/sa-migration/shinyapp/country_text.txt')
+country_text = readLines('~/Documents/sa-migration/shinyapp/country_text.txt')
 
 # Define server logic
 shinyServer(function(input, output) {
@@ -47,7 +47,7 @@ shinyServer(function(input, output) {
   })
   
   output$map = renderImage({
-    list(src = 'south_am.jpg')
+    list(src = 'base_map.jpg', width = '140%', height = '140%')
   }, deleteFile = F)
   
   output$country_name = renderText({
