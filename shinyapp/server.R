@@ -36,6 +36,15 @@ theme_set(theme_bw() + theme(legend.position = 'bottom'))
 
 country_text = readLines('./country_text.txt')
 
+facet_names = labeller("Population growth (annual %)" = "Population growth (annual %)",
+                   "Net official development assistance received (current US$)" = "Development assistance received (current US$)",
+                   "Life expectancy at birth, total (years)" = "Life expectancy at birth (years)",
+                   "GDP per capita (constant LCU)" = "GDP per capita (constant LCU)",
+                   "GDP deflator (base year varies by country)" = "GDP deflator (base year varies)")
+facet_labeller = function(variable, value) {
+  return(facet_names[value])
+}
+
 # Define server logic
 shinyServer(function(input, output) {
   output$test = renderPlot({
@@ -47,7 +56,7 @@ shinyServer(function(input, output) {
   })
   
   output$map = renderImage({
-    list(src = 'base_map.jpg', width = '140%', height = '140%')
+    list(src = paste(input$country_selection, '_map.jpg', sep = ''), width = '140%', height = '140%')
   }, deleteFile = F)
   
   output$country_name = renderText({
