@@ -38,12 +38,15 @@ country_text = readLines('./country_text.txt')
 
 # Define server logic
 shinyServer(function(input, output) {
+  colors <- c("Selected Country"='#7FA998',"Venezuela"='#9D2503')
+  
   output$test = renderPlot({
     ggplot() +
-      geom_line(data = df[which(df$country %in% input$country_selection), ], aes(x = year, y = val), color = '#7FA998') +
-      geom_line(data = df[which(df$country %in% 'VEN'), ], aes(x = year, y = val), color = '#9D2503') +
+      geom_line(data = df[which(df$country %in% input$country_selection), ], aes(x = year, y = val, color = "Selected Country" )) +
+      geom_line(data = df[which(df$country %in% 'VEN'), ], aes(x = year, y = val, color = "Venezuela")) +
       facet_wrap(indicator~., ncol = 1, scales = 'free') +
-      ylab('') + xlab('Year')
+      ylab('') + xlab('Year') +labs(  color = "Legend") +
+      scale_color_manual(values = colors)
   })
   
   output$map = renderImage({
