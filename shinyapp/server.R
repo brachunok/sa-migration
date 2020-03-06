@@ -2,7 +2,7 @@ library(shiny)
 
 # Load data set
 library(tidyverse)
-data = read.csv("../Country Data/API_Download_DS2_en_csv_v2_792501.csv")
+data = read.csv("./API_Download_DS2_en_csv_v2_792501.csv")
 colnames(data) = c("country", "indicator", c(1960:2019))
 
 data = data[, c(1, 2, 43:62)]
