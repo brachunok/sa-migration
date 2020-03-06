@@ -42,8 +42,8 @@ shinyServer(function(input, output) {
     ggplot() +
       geom_line(data = df[which(df$country %in% input$country_selection), ], aes(x = year, y = val), color = '#7FA998') +
       geom_line(data = df[which(df$country %in% 'VEN'), ], aes(x = year, y = val), color = '#9D2503') +
-      facet_wrap(indicator~., scales = 'free') +
-      ylab('Value') + xlab('Year')
+      facet_wrap(indicator~., ncol = 1, scales = 'free') +
+      ylab('') + xlab('Year')
   })
   
   output$map = renderImage({
