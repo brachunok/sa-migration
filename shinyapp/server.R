@@ -34,7 +34,7 @@ colnames(df) = c('country', 'indicator', 'year', 'val')
 library(ggplot2)
 theme_set(theme_bw() + theme(legend.position = 'bottom'))
 
-country_text = readLines('~/Documents/sa-migration/shinyapp/country_text.txt')
+country_text = readLines('./country_text.txt')
 
 # Define server logic
 shinyServer(function(input, output) {
